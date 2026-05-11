@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ksfraser\\SupportTickets\\": "src/Ksfraser/SupportTickets/"
+            "Ksfraser\\": "src/Ksfraser/"
         }
     },
     "minimum-stability": "stable"
