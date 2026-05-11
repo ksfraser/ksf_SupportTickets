@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ksfraser\SupportTickets\Entity;
 
 use Ksfraser\SupportTickets\Events\TicketCreatedEvent;
@@ -8,7 +10,7 @@ use Ksfraser\SupportTickets\Events\TicketClosedEvent;
 
 class SupportTicket
 {
-    private ?int $id;
+    private ?int $id = null;
     private string $ticketNumber;
     private string $subject;
     private ?string $description;

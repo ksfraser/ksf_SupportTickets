@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ksfraser\SupportTickets\Entity;
 
 class TicketActivity
@@ -47,11 +49,14 @@ class TicketActivity
     }
 
     public function getId(): ?int { return $this->id; }
+    public function setTicketId(int $ticketId): self { $this->ticketId = $ticketId; return $this; }
     public function getTicketId(): int { return $this->ticketId; }
     public function getActivityType(): string { return $this->activityType; }
     public function getDirection(): string { return $this->direction; }
     public function getSubject(): ?string { return $this->subject; }
+    public function setSubject(?string $subject): self { $this->subject = $subject; return $this; }
     public function getMessage(): ?string { return $this->message; }
+    public function setMessage(?string $message): self { $this->message = $message; return $this; }
     public function getEmailFrom(): ?string { return $this->emailFrom; }
     public function getEmailTo(): ?string { return $this->emailTo; }
     public function getPhoneNumber(): ?string { return $this->phoneNumber; }

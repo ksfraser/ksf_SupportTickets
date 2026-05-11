@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ksfraser\SupportTickets\Service;
 
 use Ksfraser\SupportTickets\Entity\SupportTicket;
@@ -35,7 +37,7 @@ class TicketService
         
         $ticket = $this->ticketRepository[$ticketId];
         foreach ($data as $key => $value) {
-            $method = 'set' . ucfirst($key);
+            $method = 'set' . ucfirst(str_replace('_', '', ucwords($key, '_')));
             if (method_exists($ticket, $method)) {
                 $ticket->$method($value);
             }

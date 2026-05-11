@@ -1,21 +1,23 @@
 {
     "name": "ksfraser/ksf-supporttickets",
     "description": "Support Tickets Management - Cases/Incidents like SuiteCRM",
-    "type": "php-package",
+    "type": "library",
     "license": "GPL-3.0",
     "require": {
-        "php": ">=8.1",
-        "ksfraser/ksf-project-management": "^1.0",
-        "ksfraser/ksf-calendar": "^1.0",
+        "php": "^8.1",
         "psr/event-dispatcher": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^10.5"
     },
     "autoload": {
         "psr-4": {
             "Ksfraser\\": "src/Ksfraser/"
         }
     },
-    "minimum-stability": "stable"
+    "autoload-dev": {
+        "psr-4": {
+            "Ksfraser\\Tests\\": "tests/"
+        }
+    }
 }

@@ -19,15 +19,19 @@ class TicketNote
     {
         $this->id = $data['id'] ?? null;
         $this->ticketId = $data['ticket_id'] ?? 0;
-        $this->note = $data['note'] ?? '';
+        $this->note = $data['note'] ?? $data['content'] ?? '';
         $this->noteType = $data['note_type'] ?? self::TYPE_GENERAL;
         $this->createdBy = $data['created_by'] ?? '';
         $this->createdAt = new \DateTime($data['created_at'] ?? 'now');
     }
 
     public function getId(): ?int { return $this->id; }
+    public function setTicketId(int $ticketId): self { $this->ticketId = $ticketId; return $this; }
     public function getTicketId(): int { return $this->ticketId; }
     public function getNote(): string { return $this->note; }
+    public function setNote(string $note): self { $this->note = $note; return $this; }
+    public function getContent(): string { return $this->note; }
+    public function setContent(string $content): self { $this->note = $content; return $this; }
     public function getNoteType(): string { return $this->noteType; }
     public function getCreatedBy(): string { return $this->createdBy; }
     public function getCreatedAt(): \DateTime { return $this->createdAt; }
