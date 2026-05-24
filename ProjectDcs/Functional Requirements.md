@@ -130,6 +130,40 @@ ksf_SupportTickets provides helpdesk and support case management with CRM integr
 - Show open tickets on customer page
 - Update customer timeline
 
+### FR-TKT-007: RBAC Integration
+**Requirement**: All ticket queries MUST be filtered through RBAC.
+
+**Features**:
+- JOIN against 0_rbac_record_access for all ticket-fetching queries
+- JOIN against 0_rbac_team_members for current user resolution
+- Support PUBLIC and FULL projections per entity
+- Enforce team-based access at query level
+
+### FR-TKT-008: DTO Projections
+**Requirement**: Ticket entity shall define PUBLIC and FULL data projections.
+
+**Features**:
+- PUBLIC: ticket_number, subject, status, priority, created_at, customer_id
+- FULL: all fields including assigned_to, sla_response_due, sla_resolution_due, internal_notes, escalation_history
+- TicketComment: PUBLIC vs internal-only comment visibility
+- TicketAttachment: filename/uploader vs full file_path
+
+### FR-TKT-009: Soft Delete
+**Requirement**: Tickets shall support soft delete.
+
+**Features**:
+- `deleted = 1` flag, `deleted_by`, `deleted_at` fields
+- Hard delete restricted to super-admin
+- Deleted records gated by `can_view_deleted` type-level permission
+
+### FR-TKT-010: Access Inheritance
+**Requirement**: Ticket access shall cascade to child entities.
+
+**Features**:
+- Team access to ticket inherits to ticket_comments
+- Team access to ticket inherits to ticket_attachments
+- Internal comments require FULL projection to view
+
 ## 4. Integration Events (PSR-14)
 
 | Event | Trigger |
@@ -152,4 +186,4 @@ ksf_SupportTickets provides helpdesk and support case management with CRM integr
 ---
 
 *Document Version: 1.0.0*
-*Last Updated: 2026-05-11*
+*Last Updated: 2026-05-24*
